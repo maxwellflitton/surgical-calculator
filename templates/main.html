@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <!-- bg-secondary -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+
+    <title>Surgical Calculator</title>
+  </head>
+  <body class="bg-gradient-dark bg-dark">
+    <div class="container text-white bg-dark text-center">
+        <p></p>
+    </div>
+    <div class="container text-white bg-dark rounded">
+        <div class="row">
+          <div class="col-md-8">
+              <canvas id="lineChart" ></canvas>
+          </div>
+          <div class="col-md-4">
+
+            <form id="filterForm">
+
+              <div class="form-group">
+                <label for="start">Number of weeks of epidemic</label>
+                <input type="number" class="form-control" id="weeks_epi" aria-describedby="startDate">
+              </div>
+
+              <div class="form-group">
+                  <label for="end">Number of weeks of surgical / referral shutdown</label>
+                  <input type="number" class="form-control" id="weeks_surg" aria-describedby="endDate">
+              </div>
+
+              <div class="form-group">
+                  <label for="end">Time taken from resumption to refer missed cases</label>
+                  <input type="number" class="form-control" id="time_resumption" aria-describedby="endDate">
+              </div>
+
+              <div class="form-group">
+                  <label for="end">Baseline demand / capacity</label>
+                  <input type="number" class="form-control" id="baseline_demand" aria-describedby="endDate">
+              </div>
+
+              <div class="form-group">
+                  <label for="end">Demand for surgery as a proportion of baseline during service limitation</label>
+                  <input type="number" class="form-control" id="surg_demand" aria-describedby="endDate">
+              </div>
+
+              <div class="form-group">
+                  <label for="end">Surgical capacity as a proportion of baseline during service limitation</label>
+                  <input type="number" class="form-control" id="surg_cap" aria-describedby="endDate">
+              </div>
+
+              <div class="form-group">
+                  <label for="end">Multiple for increased capacity after service limitation</label>
+                  <input type="number" class="form-control" id="multi_cap_limitation" aria-describedby="endDate">
+              </div>
+
+              <div class="form-group">
+                  <label for="end">Weekly proportional increase in capacity after service limitation</label>
+                  <input type="number" class="form-control" id="weekly_prop_increase_cap" aria-describedby="endDate">
+              </div>
+
+              <div class="form-group">
+                  <label for="end">Number of weeks to run over</label>
+                  <input type="number" class="form-control" id="num_weeks_run_over" aria-describedby="endDate">
+              </div>
+
+              <div class="form-group">
+                  <label for="end">Proportion of waiting list dying weekly due to COVID-19</label>
+                  <input type="number" class="form-control" id="prop_waiting_dying_covid" aria-describedby="endDate">
+              </div>
+
+              <div class="form-group">
+                  <label for="end">Proportion of waiting list dying weekly due to baseline age-specific competing risks</label>
+                  <input type="number" class="form-control" id="prop_waiting_dying_baseline" aria-describedby="endDate">
+              </div>
+
+              <button id="calcButton" class="btn btn-primary">Calculate</button>
+            </form>
+          </div>
+        </div>
+
+    </div>
+    <div>
+        <p></p>
+        <div id="demo" class="text-white"></div>
+    </div>
+    <div id="placeholder"></div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+    <script src="/static/js/index_charting.js"></script>
+
+    <script>
+            
+        </script>
+  </body>
+</html>
+

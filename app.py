@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from calculator import SurgicalCalculator
 from old_code import dem_cap
 
@@ -37,19 +37,19 @@ def calculate(weeks_epi, weeks_surg, time_resumption, baseline_demand, surg_dema
     prop_waiting_dying_covid = float(prop_waiting_dying_covid)
     prop_waiting_dying_baseline = float(prop_waiting_dying_baseline)
 
-    out_come = dem_cap(
-        weeks_epi,
-        weeks_surg,
-        time_resumption,
-        baseline_demand,
-        surg_demand,
-        surg_cap,
-        multi_cap_limitation,
-        weekly_prop_increase_cap,
-        num_weeks_run_over,
-        prop_waiting_dying_covid,
-        prop_waiting_dying_baseline
-    )
+    # out_come = dem_cap(
+    #     weeks_epi,
+    #     weeks_surg,
+    #     time_resumption,
+    #     baseline_demand,
+    #     surg_demand,
+    #     surg_cap,
+    #     multi_cap_limitation,
+    #     weekly_prop_increase_cap,
+    #     num_weeks_run_over,
+    #     prop_waiting_dying_covid,
+    #     prop_waiting_dying_baseline
+    # )
 
     calc = SurgicalCalculator(weeks_epi=weeks_epi, weeks_surg=weeks_surg, time_resumption=time_resumption,
                               baseline_demand=baseline_demand, surg_demand=surg_demand, surg_cap=surg_cap,
@@ -58,7 +58,13 @@ def calculate(weeks_epi, weeks_surg, time_resumption, baseline_demand, surg_dema
                               prop_waiting_dying_covid=prop_waiting_dying_covid,
                               prop_waiting_dying_baseline=prop_waiting_dying_baseline)
     # calc.fire()
-    return "done"
+    return {
+        "WEEK": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        "NEW_DEMAND": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+        "CAPACITY": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        "REMAINING_CR": [4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+        "MEAN_WAIT": [5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+    }
     # return {
     #     "WEEK": list(calc.final_df["WEEK"]),
     #     "NEW_DEMAND": list(calc.final_df["NEW_DEMAND"]),
@@ -82,7 +88,7 @@ def test():
 
 @app.route('/')
 def home():
-    return "Hello World!"
+    return render_template("main.html")
 
 # http://127.0.0.1:5000/calculate/14/5/8/4/3/0.6/0.6/0.5/0.7/0.4/0.8/
 
